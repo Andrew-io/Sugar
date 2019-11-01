@@ -1,5 +1,6 @@
 // var sensor = require("node-dht-sensor");
-//*****
+
+// ***** FAKE sensor
 var sensor = {
 	read: (a,b,c) => {
 	setTimeout(()=>{c(
@@ -9,7 +10,8 @@ var sensor = {
 	);},700);
 	}
 };
-//**** 
+//**** END fake sensor
+
 const ipcHandler = require('./ipc_handler');
 let last_sensor_data = {err: 'No data'};
 
