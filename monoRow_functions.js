@@ -1,7 +1,6 @@
 /* 
 Read Object from a string path */
-const getV = (obj, path) => (path.split('.').
-	reduce((o, k)=> typeof o === 'object' ? o[k] : undefined, obj));
+const getIthem = (obj, path) => path.split('.').reduce((ob, k)=> ob[k] || '', obj);
 
 /* 
 Factorial n! */
@@ -13,11 +12,14 @@ const fibo = (m, c=[1], l=1) => l == m ? c : fibo(m, [...c, (c[l-2]||0)+c[l-1]],
 
 /* 
 String reverse */
-const reverse = str => !str ? null :
-	[...str].reduce((acc, chr)=> chr + acc, '');
+const reverse = (str = '') => [...str].reduce((a, c) => c + a, '');
+
+/*
+Sum an ndefinite number of parameters*/
+const sum = (...n) => n.reduce((a, x) => a+=x, 0);
 
 /* 
 Query string parser */
-const parseQstring = str => /\?|#/.test(str) ?
-	str.substr(str.search(/\?|#/) +1).split('&')
+const parseQstring = str => /\?/.test(str) ?
+	str.substr(str.search(/\?/) +1).split('&')
 		.map(x => ({k: x.split('=')[0], v: x.split('=')[1]})) : [];
